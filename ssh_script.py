@@ -31,9 +31,9 @@ def main(devices, loopback_ips, user,password, enable_pass):
             print(output)
             print()
       except netmiko.NetMikoAuthenticationException:
-            print("Invalid login credentials")
-      except netmiko.NetMikoTimeoutException():
-            print("Connection left idle and has timedout")
+            print(f"Invalid login credentials for {ip}")
+      except netmiko.NetMikoTimeoutException:
+            print(f"{ip} Connection left idle and has timedout")
 
       except Exception as e:
             print("Unexpected error occured.")
