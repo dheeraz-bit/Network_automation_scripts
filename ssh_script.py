@@ -11,7 +11,7 @@ password = getpass.getpass("Enter your password: " )
 enable_pass = getpass.getpass("Enter your enable seceret: ")
 
         
-def main(devices, loopback_ips, user,password, enable_pass):
+def main(ip, loopback_ip, user,password, enable_pass):
       connect = {"device_type":"cisco_ios",
                 "ip":ip,
                 "username":user,
@@ -47,7 +47,7 @@ if __name__=="__main__":
       for ip, loopback_ip in zip(devices,loopback_ips):
             try:
                   socket.create_connection((ip, 22,),5)
-                  th = threading.Thread(target=main, args=(devices, loopback_ips, user,password, enable_pass))
+                  th = threading.Thread(target=main, args=(ip, loopback_ip, user,password, enable_pass))
                   threds.append(th)
                   th.start()
                   print(len(threds))
